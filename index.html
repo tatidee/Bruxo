@@ -123,6 +123,22 @@ section{padding:6.5rem 4rem}
 .social-link:hover{color:var(--dorado);transform:translateY(-2px)}
 .social-link svg{width:18px;height:18px}
 
+/* FRASE CARD */
+.frase-sec{padding:5rem 4rem;background:var(--humo)}
+.frase-card{max-width:780px;margin:0 auto;border:1px solid rgba(201,150,58,.22);padding:3.5rem 4rem;position:relative;text-align:center;background:linear-gradient(135deg,rgba(201,150,58,.04) 0%,transparent 60%)}
+.frase-card::before,.frase-card::after{content:'';position:absolute;width:40px;height:40px;border-color:rgba(201,150,58,.45);border-style:solid}
+.frase-card::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.frase-card::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.frase-card-inner::before,.frase-card-inner::after{content:'';position:absolute;width:40px;height:40px;border-color:rgba(201,150,58,.45);border-style:solid}
+.frase-card-inner::before{top:-1px;right:-1px;border-width:2px 2px 0 0}
+.frase-card-inner::after{bottom:-1px;left:-1px;border-width:0 0 2px 2px}
+.frase-card-inner{position:relative}
+.frase-sym{font-family:var(--serif);font-size:1.4rem;color:rgba(201,150,58,.4);letter-spacing:.5em;display:block;margin-bottom:1.8rem}
+.frase-text{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.8vw,2rem);color:var(--crema);line-height:1.7;font-weight:400}
+.frase-text em{color:var(--dorado);font-style:italic}
+.frase-name{margin-top:2rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,150,58,.5)}
+@media(max-width:900px){.frase-sec{padding:4rem 1.5rem}.frase-card{padding:2.5rem 2rem}}
+
 /* HERO BOTTOM */
 .hero-bottom{position:relative;height:60vh;overflow:hidden}
 .hero-bottom img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.55) saturate(.7)}
@@ -292,6 +308,21 @@ footer{background:var(--humo);padding:2.2rem 4rem;display:flex;align-items:cente
   </div>
 </div>
 
+<!-- FRASE CARD -->
+<div class="frase-sec">
+  <div class="frase-card">
+    <div class="frase-card-inner">
+      <span class="frase-sym">✦ ✦ ✦</span>
+      <p class="frase-text" data-i18n="frase_text">
+        De cada legua <em>un encanto</em>,<br>
+        cada parada <em>una amistad</em>,<br>
+        en cada mate <em>una nostalgia</em>.
+      </p>
+      <p class="frase-name">Ronival Ferreira</p>
+    </div>
+  </div>
+</div>
+
 <div class="div"><div class="div-line"></div><span class="div-sym">✦</span><div class="div-line"></div></div>
 
 <!-- FILOSOFÍA -->
@@ -430,6 +461,7 @@ const translations = {
     cta_btn1:        'Conectar con su historia',
     cta_btn2:        'Volver al inicio ↑',
     cta_badge:       '✦ &nbsp; Contenido en desarrollo &nbsp; ✦',
+    frase_text:      'De cada legua <em>un encanto</em>,<br>cada parada <em>una amistad</em>,<br>en cada mate <em>una nostalgia</em>.',
     foot_copy:       '© 2025 · Ronival Ferreira · Hecho con alma de campo'
   },
   pt: {
@@ -481,6 +513,7 @@ const translations = {
     cta_btn1:        'Conectar com sua história',
     cta_btn2:        'Voltar ao início ↑',
     cta_badge:       '✦ &nbsp; Conteúdo em desenvolvimento &nbsp; ✦',
+    frase_text:      'De cada légua <em>um encanto</em>,<br>cada parada <em>uma amizade</em>,<br>em cada mate <em>uma saudade</em>.',
     foot_copy:       '© 2025 · Ronival Ferreira · Feito com alma de campo'
   }
 };
