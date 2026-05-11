@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="top">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ronival Ferreira — El Bruxo dos Potros</title>
+<link rel="icon" type="image/x-icon" href="src/bruxoicon .ico">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -24,7 +25,7 @@ body{background:var(--humo);color:var(--crema);font-family:var(--sans);font-weig
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:linear-gradient(to bottom,rgba(26,20,16,.96),transparent);backdrop-filter:blur(4px)}
-.nav-logo{font-family:var(--serif);font-size:.95rem;letter-spacing:.18em;color:var(--dorado);text-transform:uppercase}
+.nav-logo{font-family:var(--serif);font-size:.95rem;letter-spacing:.18em;color:var(--dorado);text-transform:uppercase;cursor:pointer;text-decoration:none}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{color:var(--crema);text-decoration:none;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65;transition:opacity .3s,color .3s}
 .nav-links a:hover{opacity:1;color:var(--dorado)}
@@ -160,9 +161,13 @@ section{padding:6.5rem 4rem}
 .cta-badge{display:inline-block;margin-top:2.5rem;padding:.45rem 1.4rem;border:1px solid rgba(201,150,58,.18);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(201,150,58,.45);position:relative}
 
 /* FOOTER */
-footer{background:var(--humo);padding:2.2rem 4rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(201,150,58,.07)}
-.foot-logo{font-family:var(--serif);font-size:.95rem;color:rgba(201,150,58,.45);letter-spacing:.1em}
-.foot-copy{font-size:.68rem;color:rgba(245,237,216,.18);letter-spacing:.08em}
+footer{background:var(--humo);padding:2.2rem 4rem 1.4rem;display:flex;flex-direction:column;align-items:center;gap:1rem;border-top:1px solid rgba(201,150,58,.07)}
+.foot-row{width:100%;display:flex;align-items:center;justify-content:space-between}
+.foot-logo{font-family:var(--serif);font-size:.95rem;color:rgba(201,150,58,.45);letter-spacing:.1em;flex:1}
+.foot-copy{font-size:.68rem;color:rgba(245,237,216,.18);letter-spacing:.08em;flex:1;text-align:right}
+.foot-dev{font-size:.58rem;color:rgba(245,237,216,.35);letter-spacing:.14em;text-transform:uppercase}
+.foot-dev a{color:rgba(201,150,58,.6);text-decoration:none;transition:color .3s}
+.foot-dev a:hover{color:rgba(201,150,58,.95)}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -174,7 +179,8 @@ footer{background:var(--humo);padding:2.2rem 4rem;display:flex;align-items:cente
   .quotes{grid-template-columns:1fr}
   .gal-grid{grid-template-columns:1fr 1fr}
   .gal-item.large{grid-row:span 1;min-height:260px}
-  footer{flex-direction:column;gap:1rem;text-align:center;padding:1.8rem 1.5rem}
+  footer{padding:1.8rem 1.5rem 1rem}
+  .foot-row{flex-direction:column;gap:1rem;text-align:center}
   .div{padding:0 1.5rem}
 }
 </style>
@@ -183,7 +189,7 @@ footer{background:var(--humo);padding:2.2rem 4rem;display:flex;align-items:cente
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Bruxo dos potros</div>
+  <a class="nav-logo" href="#top">Bruxo dos potros</a>
   <ul class="nav-links">
     <li><a href="#sobre" data-i18n="nav_historia">Historia</a></li>
     <li><a href="#galeria" data-i18n="nav_galeria">Galería</a></li>
@@ -387,6 +393,7 @@ footer{background:var(--humo);padding:2.2rem 4rem;display:flex;align-items:cente
 
 <!-- FOOTER -->
 <footer>
+<div class="foot-row">
   <div class="foot-logo">El Bruxo dos Potros</div>
   <div class="social-links">
     <a href="https://www.instagram.com/bruxo_dos_potros/" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
@@ -408,6 +415,8 @@ footer{background:var(--humo);padding:2.2rem 4rem;display:flex;align-items:cente
     </a>
   </div>
   <div class="foot-copy" data-i18n="foot_copy">© 2025 · Ronival Ferreira · Hecho con alma de campo</div>
+</div>
+<div class="foot-dev">Desarrollado por <a href="https://tricode.studio" target="_blank" rel="noopener">Tricode.studio</a></div>
 </footer>
 
 <script>
