@@ -94,13 +94,29 @@ section{padding:6.5rem 4rem}
 .gal-sec h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:var(--crema);margin-bottom:.7rem}
 .gal-sub{font-family:var(--italic);font-style:italic;font-size:1rem;color:rgba(245,237,216,.45);margin-bottom:3rem}
 .gal-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:.75rem}
-.gal-item{overflow:hidden;position:relative}
+.gal-item{overflow:hidden;position:relative;cursor:pointer}
 .gal-item.large{grid-row:span 2}
 .gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;filter:brightness(.82) saturate(.8)}
 .gal-item:hover img{transform:scale(1.04);filter:brightness(.95) saturate(1)}
+.gal-item::after{content:'⤢';position:absolute;top:.6rem;right:.7rem;font-size:1rem;color:rgba(201,150,58,0);transition:color .3s;pointer-events:none}
+.gal-item:hover::after{color:rgba(201,150,58,.75)}
 .gal-item .gal-label{position:absolute;bottom:0;left:0;right:0;padding:.75rem 1rem;background:linear-gradient(to top,rgba(26,20,16,.85),transparent);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,150,58,.7)}
 .gal-item.large{min-height:460px}
 .gal-item:not(.large){min-height:220px}
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(26,20,16,.96);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .3s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lb-img-wrap{position:relative;display:flex;flex-direction:column;align-items:center;max-width:90vw;max-height:88vh}
+.lb-img-wrap img{max-width:88vw;max-height:80vh;object-fit:contain;border:1px solid rgba(201,150,58,.18);display:block;transition:opacity .25s}
+.lb-img-wrap img.lb-fade{opacity:0}
+.lb-caption{font-family:var(--italic);font-style:italic;font-size:.78rem;color:rgba(201,150,58,.55);letter-spacing:.1em;margin-top:.75rem;text-align:center;min-height:1.2em}
+.lb-close{position:fixed;top:1rem;right:1.4rem;background:none;border:none;color:rgba(245,237,216,.45);font-size:1.8rem;cursor:pointer;line-height:1;padding:.4rem;transition:color .2s;z-index:1001}
+.lb-close:hover{color:var(--dorado)}
+.lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(26,20,16,.5);border:none;color:rgba(245,237,216,.5);font-size:2.8rem;cursor:pointer;padding:.4rem .7rem;line-height:1;transition:color .2s,background .2s;user-select:none;z-index:1001;border-radius:4px}
+.lb-prev{left:.6rem}
+.lb-next{right:.6rem}
+.lb-prev:hover,.lb-next:hover{color:var(--dorado);background:rgba(26,20,16,.8)}
+.lb-counter{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);font-size:.62rem;color:rgba(245,237,216,.22);letter-spacing:.2em;text-transform:uppercase}
 
 /* FILOSOFÍA */
 .filo{background:linear-gradient(160deg,#0D0A07 0%,#1A1410 60%,#241A10 100%);position:relative;overflow:hidden}
@@ -286,19 +302,19 @@ footer{background:var(--humo);padding:2.2rem 4rem 1.4rem;display:flex;flex-direc
     <h2 data-i18n="gal_h2">El campo en imágenes</h2>
     <p class="gal-sub" data-i18n="gal_sub">Su mundo, su trabajo, su identidad.</p>
     <div class="gal-grid">
-      <div class="gal-item large">
+      <div class="gal-item large" onclick="openLightbox(0)">
         <img src="src/momentoIntimoentreelyelanimal.jpg" alt="Momento íntimo">
       </div>
-      <div class="gal-item">
+      <div class="gal-item" onclick="openLightbox(1)">
         <img src="src/eltrabajo.jpg" alt="El trabajo">
       </div>
-      <div class="gal-item">
+      <div class="gal-item" onclick="openLightbox(2)">
         <img src="src/elpaisaje.jpg" alt="El paisaje">
       </div>
-      <div class="gal-item">
+      <div class="gal-item" onclick="openLightbox(3)">
         <img src="src/reconocimientos.jpg" alt="Reconocimientos">
       </div>
-      <div class="gal-item">
+      <div class="gal-item" onclick="openLightbox(4)">
         <img src="src/bruxo1.jpg" alt="En el campo">
       </div>
     </div>
@@ -560,6 +576,72 @@ document.querySelectorAll('.sobre-grid,.gal-grid,.quotes,.valores').forEach(el=>
   el.style.transition='opacity .85s ease,transform .85s ease';
   obs.observe(el);
 });
+
+// LIGHTBOX
+var lbImages=[
+  {src:'src/momentoIntimoentreelyelanimal.jpg',alt:'Momento íntimo'},
+  {src:'src/eltrabajo.jpg',alt:'El trabajo'},
+  {src:'src/elpaisaje.jpg',alt:'El paisaje'},
+  {src:'src/reconocimientos.jpg',alt:'Reconocimientos'},
+  {src:'src/bruxo1.jpg',alt:'En el campo'}
+];
+var lbIndex=0;
+function openLightbox(i){
+  lbIndex=i;
+  lbRender();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+function lbNav(dir){
+  var img=document.getElementById('lb-img');
+  img.classList.add('lb-fade');
+  setTimeout(function(){
+    lbIndex=(lbIndex+dir+lbImages.length)%lbImages.length;
+    lbRender();
+    img.classList.remove('lb-fade');
+  },200);
+}
+function lbRender(){
+  var img=document.getElementById('lb-img');
+  var cap=document.getElementById('lb-caption');
+  img.src=lbImages[lbIndex].src;
+  img.alt=lbImages[lbIndex].alt;
+  cap.textContent=lbImages[lbIndex].alt;
+  document.getElementById('lb-cur').textContent=lbIndex+1;
+  document.getElementById('lb-total').textContent=lbImages.length;
+}
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('lightbox').classList.contains('open'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='ArrowRight')lbNav(1);
+});
+(function(){
+  var lb=document.getElementById('lightbox');
+  var sx=0;
+  lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>50)lbNav(dx<0?1:-1);
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)closeLightbox();});
+})();
 </script>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)" aria-label="Anterior">&#8249;</button>
+  <div class="lb-img-wrap">
+    <img id="lb-img" src="" alt="">
+    <p id="lb-caption" class="lb-caption"></p>
+  </div>
+  <button class="lb-next" onclick="lbNav(1)" aria-label="Siguiente">&#8250;</button>
+  <div class="lb-counter"><span id="lb-cur">1</span> / <span id="lb-total">5</span></div>
+</div>
 </body>
 </html>
