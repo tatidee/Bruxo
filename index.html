@@ -20,7 +20,7 @@
   --italic:'Cormorant Garamond',Georgia,serif;
   --sans:'Barlow',sans-serif;
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{background:var(--humo);color:var(--crema);font-family:var(--sans);font-weight:300;overflow-x:hidden;line-height:1.7}
 
 /* NAV */
@@ -37,8 +37,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:0 4rem;overflow:hidden}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(26,20,16,.295) 42%,rgba(26,20,16,.2) 100%)}
 .hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.38) saturate(.6)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(26, 20, 16, 0.295) 42%,rgba(26,20,16,.2) 100%)}
 .hero-line{position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,var(--dorado) 30%,var(--cuero) 70%,transparent);opacity:.55}
 .hero-content{position:relative;z-index:5;max-width:580px}
 .eyebrow{font-size:.7rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--dorado);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
@@ -157,7 +157,7 @@ section{padding:6.5rem 4rem}
 @media(max-width:900px){.frase-sec{padding:4rem 1.5rem}.frase-card{padding:2.5rem 2rem}}
 
 /* HERO BOTTOM */
-.hero-bottom{position:relative;height:60vh;overflow:hidden}
+.hero-bottom{position:relative;height:80vh;overflow:hidden}
 .hero-bottom img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.55) saturate(.7)}
 .hero-bottom-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:rgba(26,20,16,.35)}
 .hero-bottom-overlay h2{font-family:var(--serif);font-size:clamp(2rem,5vw,4rem);font-weight:900;color:var(--crema);line-height:1.1}
@@ -216,6 +216,8 @@ footer{background:var(--humo);padding:2.2rem 4rem 1.4rem;display:flex;flex-direc
     <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
     <span class="lang-sep">|</span>
     <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
   </div>
 </nav>
 
@@ -258,25 +260,25 @@ footer{background:var(--humo);padding:2.2rem 4rem 1.4rem;display:flex;flex-direc
   <div class="inner">
     <div class="sobre-grid">
       <div class="sobre-img-wrap">
-        <img class="sobre-img" src="src/retratodecampo.jpg" alt="Ronival Ferreira">
+        <img class="sobre-img" src="src/bruxoprincipal.jpg" alt="Ronival Ferreira">
         <div class="frame-corner fc-tl"></div>
         <div class="frame-corner fc-tr"></div>
         <div class="frame-corner fc-bl"></div>
         <div class="frame-corner fc-br"></div>
         <div class="img-caption">
-          <p>Ronival Ferreira</p>
-          <span data-i18n="caption_sub">El Bruxo dos Potros</span>
+          <!-- <p>Ronival Ferreira</p>
+          <span data-i18n="caption_sub">El Bruxo dos Potros</span> -->
         </div>
       </div>
       <div class="sobre">
         <div class="sec-label" data-i18n="sobre_label">Su historia</div>
-        <h2 data-i18n="sobre_h2">Un hombre de campo,<br><em>una leyenda de a pie</em></h2>
-        <p data-i18n="sobre_p1">Nació en el campo brasileño, entre trabajo duro y caballos. Desde los 11 años sufrió ataques epilépticos, pero <strong>ningún obstáculo apagó su pasión</strong>. A los 13 dejó todo para perseguir su sueño.</p>
-        <p data-i18n="sobre_p2">En 2012, una tragedia personal lo llevó al límite. Fue entonces, en su momento más oscuro, cuando <strong>los caballos curaron su alma</strong> y nació el "Bruxo dos Potros".</p>
-        <p data-i18n="sobre_p3">Hoy es domador, maestro y psicólogo ecuestre. Su método: <strong>paciencia, lectura corporal y confianza mutua</strong>. Sin violencia, sin imposición. Solo diálogo.</p>
+        <h2 data-i18n="sobre_h2">Un gaucho sin frontera</h2>
+        <p data-i18n="sobre_p1">Nació en el campo brasileño, entre trabajo y caballos. Desde los 11 años sufrió ataques epilépticos, pero <strong>ningún obstáculo apagó su pasión</strong>. A los 13 dejó todo para perseguir su sueño y trabajó en el campo cuidando ganado y haciendo alambrados; de todo un poco, excepto manejar maquinaria a motor.</p>
+        <p data-i18n="sobre_p2">En 2013, una tragedia personal lo llevó al límite. Fue entonces, en su momento más oscuro, cuando <strong>los caballos curaron su alma</strong> y nació el "Bruxo dos Potros" en Santa Vitória do Palmar.</p>
+        <p data-i18n="sobre_p3">Hoy es domador, maestro y psicólogo ecuestre. Su método: <strong>paciencia, lectura corporal y confianza mutua</strong>. Sin violencia.</p>
         <div class="stats">
           <div>
-            <div class="stat-n">3.500</div>
+            <div class="stat-n">11.700</div>
             <div class="stat-l" data-i18n="stat_km">km a caballo</div>
           </div>
           <div>
@@ -312,7 +314,7 @@ footer{background:var(--humo);padding:2.2rem 4rem 1.4rem;display:flex;flex-direc
         <img src="src/elpaisaje.jpg" alt="El paisaje">
       </div>
       <div class="gal-item" onclick="openLightbox(3)">
-        <img src="src/reconocimientos.jpg" alt="Reconocimientos">
+        <img src="src/bruxocordillera.jpg" alt="Reconocimientos">
       </div>
       <div class="gal-item" onclick="openLightbox(4)">
         <img src="src/bruxo1.jpg" alt="En el campo">
@@ -323,7 +325,7 @@ footer{background:var(--humo);padding:2.2rem 4rem 1.4rem;display:flex;flex-direc
 
 <!-- IMAGEN PANORÁMICA -->
 <div class="hero-bottom">
-  <img src="src/imagenPrincipalAbajo.jpg" alt="El Bruxo en el campo">
+  <img src="src/imagenPrincipalAbajo2.jpg" alt="El Bruxo en el campo">
   <div class="hero-bottom-overlay">
     <h2 data-i18n="hero_bottom_h2">"Lo difícil es hacerlo fácil,<br><em>con calma y respeto."</em></h2>
     <p data-i18n="hero_bottom_p">— Ronival Ferreira, El Bruxo dos Potros</p>
@@ -450,10 +452,10 @@ const translations = {
     cta_gallery:     'Ver galería ↓',
     caption_sub:     'El Bruxo dos Potros',
     sobre_label:     'Su historia',
-    sobre_h2:        'Un hombre de campo,<br><em>una leyenda de a pie</em>',
-    sobre_p1:        'Nació en el campo brasileño, entre trabajo duro y caballos. Desde los 11 años sufrió ataques epilépticos, pero <strong>ningún obstáculo apagó su pasión</strong>. A los 13 dejó todo para perseguir su sueño.',
-    sobre_p2:        'En 2012, una tragedia personal lo llevó al límite. Fue entonces, en su momento más oscuro, cuando <strong>los caballos curaron su alma</strong> y nació el "Bruxo dos Potros".',
-    sobre_p3:        'Hoy es domador, maestro y psicólogo ecuestre. Su método: <strong>paciencia, lectura corporal y confianza mutua</strong>. Sin violencia, sin imposición. Solo diálogo.',
+    sobre_h2:        'Un gaucho sin frontera',
+    sobre_p1:        'Nació en el campo brasileño, entre trabajo y caballos. Desde los 11 años sufrió ataques epilépticos, pero <strong>ningún obstáculo apagó su pasión</strong>. A los 13 dejó todo para perseguir su sueño y trabajó en el campo cuidando ganado y haciendo alambrados; de todo un poco, excepto manejar maquinaria a motor.',
+    sobre_p2:        'En 2013, una tragedia personal lo llevó al límite. Fue entonces, en su momento más oscuro, cuando <strong>los caballos curaron su alma</strong> y nació el "Bruxo dos Potros" en Santa Vitória do Palmar.',
+    sobre_p3:        'Hoy es domador, maestro y psicólogo ecuestre. Su método: <strong>paciencia, lectura corporal y confianza mutua</strong>. Sin violencia.',
     stat_km:         'km a caballo',
     stat_cursos:     'Inicio cursos',
     stat_potros:     'Potros transformados',
@@ -502,10 +504,10 @@ const translations = {
     cta_gallery:     'Ver galeria ↓',
     caption_sub:     'O Bruxo dos Potros',
     sobre_label:     'Sua história',
-    sobre_h2:        'Um homem do campo,<br><em>uma lenda de verdade</em>',
-    sobre_p1:        'Nasceu no campo brasileiro, entre trabalho duro e cavalos. Desde os 11 anos sofreu ataques epiléticos, mas <strong>nenhum obstáculo apagou sua paixão</strong>. Aos 13 largou tudo para perseguir seu sonho.',
-    sobre_p2:        'Em 2012, uma tragédia pessoal o levou ao limite. Foi então, no seu momento mais escuro, que <strong>os cavalos curaram sua alma</strong> e nasceu o "Bruxo dos Potros".',
-    sobre_p3:        'Hoje é domador, mestre e psicólogo equestre. Seu método: <strong>paciência, leitura corporal e confiança mútua</strong>. Sem violência, sem imposição. Só diálogo.',
+    sobre_h2:        'Um gaúcho sem fronteiras',
+    sobre_p1:        'Nasceu no campo brasileiro, entre trabalho e cavalos. Desde os 11 anos sofreu ataques epiléticos, mas <strong>nenhum obstáculo apagou sua paixão</strong>. Aos 13, largou tudo para perseguir seu sonho — trabalhou no campo cuidando de gado e fazendo cercas; de tudo um pouco, menos operar maquinário motorizado.',
+    sobre_p2:        'Em 2013, uma tragédia pessoal o levou ao limite. Foi então, no seu momento mais sombrio, que <strong>os cavalos curaram sua alma</strong> e nasceu o "Bruxo dos Potros" em Santa Vitória do Palmar.',
+    sobre_p3:        'Hoje é domador, mestre e psicólogo equestre. Seu método: <strong>paciência, leitura corporal e confiança mútua</strong>. Sem violência.',
     stat_km:         'km a cavalo',
     stat_cursos:     'Início cursos',
     stat_potros:     'Potros transformados',
@@ -523,7 +525,7 @@ const translations = {
     qauthor2:        '— Ronival Ferreira',
     qauthor3:        '— O Bruxo dos Potros',
     qauthor4:        '— Ronival Ferreira',
-    quote5:          'Gosto sempre de saltar, aprendo com os mais antigos também. A vida é uma troca de aprendizados e lições.',
+    quote5:          'Gosto sempre de aprender, aprendo com os mais antigos também. A vida é uma troca de aprendizados e lições.',
     qauthor5:        '— Ronival Ferreira',
     valor1:          'Respeito',
     valor2:          'Paciência',
@@ -540,13 +542,67 @@ const translations = {
     cta_badge:       '✦ &nbsp; Conteúdo em desenvolvimento &nbsp; ✦',
     frase_text:      'De cada légua <em>um encanto</em>,<br>cada parada <em>uma amizade</em>,<br>em cada mate <em>uma saudade</em>.',
     foot_copy:       '© 2025 · Ronival Ferreira · Feito com alma de campo'
+  },
+  en: {
+    nav_historia:    'History',
+    nav_galeria:     'Gallery',
+    nav_filosofia:   'Philosophy',
+    nav_contacto:    'Contact',
+    hero_eyebrow:    'Ronival Ferreira',
+    hero_h1:         'The man who <span class="gold">tamed</span><span class="ital">the untameable</span>',
+    hero_tagline:    'Where the countryside becomes legend<br>and the colt learns the language of the soul.',
+    hero_sub:        'Horse breeder, trainer and equine psychologist. Guardian of a tradition passed down through patience, respect and love for the land.',
+    cta_history:     'Discover his story',
+    cta_gallery:     'View gallery ↓',
+    caption_sub:     'The Bruxo dos Potros',
+    sobre_label:     'His story',
+    sobre_h2:        'A gaucho without borders',
+    sobre_p1:        'He was born in the Brazilian countryside, between work and horses. From the age of 11, he suffered epileptic seizures, but <strong>no obstacle could extinguish his passion</strong>. At 13 he left everything to chase his dream — working the land, tending cattle, building fences; doing a little of everything, except operating motor machinery.',
+    sobre_p2:        'In 2013, a personal tragedy pushed him to his limits. It was then, in his darkest moment, that <strong>horses healed his soul</strong> and the "Bruxo dos Potros" was born in Santa Vitória do Palmar.',
+    sobre_p3:        'Today he is a horse tamer, teacher, and equine psychologist. His method: <strong>patience, body reading, and mutual trust</strong>. No violence.',
+    stat_km:         'km on horseback',
+    stat_cursos:     'Courses started',
+    stat_potros:     'Colts transformed',
+    gal_label:       'Moments',
+    gal_h2:          'The countryside in images',
+    gal_sub:         'His world, his work, his identity.',
+    filo_label:      'His essence',
+    filo_h2:         'What guides every step',
+    filo_sub:        'The words that define him.',
+    quote1:          'The horse is not hypnotised. But you can transform its fear into trust. It is a process of patience, persistence and observation.',
+    quote2:          'Learning to work with a horse also teaches you to work with other people. The key is understanding their language.',
+    quote3:          'Horses taught me that life is a constant learning. When I think I know something, there is always something new to discover.',
+    quote4:          'The path of a horse tamer never stops. There is always something new to learn, something more to teach.',
+    qauthor1:        '— The Bruxo dos Potros',
+    qauthor2:        '— Ronival Ferreira',
+    qauthor3:        '— The Bruxo dos Potros',
+    qauthor4:        '— Ronival Ferreira',
+    quote5:          'I always like to keep learning — I learn from the elders too. Life is an exchange of knowledge and lessons.',
+    qauthor5:        '— Ronival Ferreira',
+    valor1:          'Respect',
+    valor2:          'Patience',
+    valor3:          'Passion',
+    valor4:          'Tradition',
+    valor5:          'Identity',
+    hero_bottom_h2:  '"The hard part is making it easy,<br><em>with calm and respect."</em>',
+    hero_bottom_p:   '— Ronival Ferreira, The Bruxo dos Potros',
+    cta_ey:          'Coming soon',
+    cta_h2:          'A story that<br><em>is just beginning</em>',
+    cta_desc:        'Follow what is coming: courses, events and the world of the Bruxo dos Potros getting closer to you.',
+    cta_btn1:        'Connect with his story',
+    cta_btn2:        'Back to top ↑',
+    cta_badge:       '✦ &nbsp; Content in development &nbsp; ✦',
+    frase_text:      'From each league <em>an enchantment</em>,<br>each stop <em>a friendship</em>,<br>in each mate <em>a nostalgia</em>.',
+    foot_copy:       '© 2025 · Ronival Ferreira · Made with the soul of the countryside'
   }
 };
 
 function setLang(lang) {
-  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'es';
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'en' ? 'en' : 'es';
   document.title = lang === 'pt'
     ? 'Ronival Ferreira — O Bruxo dos Potros'
+    : lang === 'en'
+    ? 'Ronival Ferreira — The Bruxo dos Potros'
     : 'Ronival Ferreira — El Bruxo dos Potros';
 
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
@@ -582,7 +638,7 @@ var lbImages=[
   {src:'src/momentoIntimoentreelyelanimal.jpg',alt:'Momento íntimo'},
   {src:'src/eltrabajo.jpg',alt:'El trabajo'},
   {src:'src/elpaisaje.jpg',alt:'El paisaje'},
-  {src:'src/reconocimientos.jpg',alt:'Reconocimientos'},
+  {src:'src/bruxocordillera.jpg',alt:'Reconocimientos'},
   {src:'src/bruxo1.jpg',alt:'En el campo'}
 ];
 var lbIndex=0;
@@ -610,7 +666,7 @@ function lbRender(){
   var cap=document.getElementById('lb-caption');
   img.src=lbImages[lbIndex].src;
   img.alt=lbImages[lbIndex].alt;
-  cap.textContent=lbImages[lbIndex].alt;
+  cap.textContent='';
   document.getElementById('lb-cur').textContent=lbIndex+1;
   document.getElementById('lb-total').textContent=lbImages.length;
 }
