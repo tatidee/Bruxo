@@ -411,7 +411,7 @@ footer{background:var(--humo);padding:2.2rem 4rem 1.4rem;display:flex;flex-direc
 <!-- LIBRO -->
 <section class="libro-sec" id="libro">
   <div class="libro-grid">
-    <div class="libro-img-wrap">
+    <div class="libro-img-wrap" onclick="openBookZoom()" style="cursor:zoom-in">
       <img class="libro-img" src="src/libro.jpg" alt="Libro de Ronival Ferreira">
       <div class="libro-shine"></div>
     </div>
@@ -699,6 +699,20 @@ function openLightbox(i){
 function closeLightbox(){
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow='';
+  document.querySelector('.lb-prev').style.display='';
+  document.querySelector('.lb-next').style.display='';
+  document.getElementById('lb-cur').parentElement.style.display='';
+}
+function openBookZoom(){
+  var lb=document.getElementById('lightbox');
+  document.getElementById('lb-img').src='src/libro.jpg';
+  document.getElementById('lb-img').alt='Libro de Ronival Ferreira';
+  document.getElementById('lb-caption').textContent='';
+  document.querySelector('.lb-prev').style.display='none';
+  document.querySelector('.lb-next').style.display='none';
+  document.getElementById('lb-cur').parentElement.style.display='none';
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
 }
 function lbNav(dir){
   var img=document.getElementById('lb-img');
@@ -724,7 +738,7 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowLeft')lbNav(-1);
   if(e.key==='ArrowRight')lbNav(1);
 });
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   var lb=document.getElementById('lightbox');
   var sx=0;
   lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
@@ -732,8 +746,11 @@ document.addEventListener('keydown',function(e){
     var dx=e.changedTouches[0].clientX-sx;
     if(Math.abs(dx)>50)lbNav(dx<0?1:-1);
   });
-  lb.addEventListener('click',function(e){if(e.target===lb)closeLightbox();});
-})();
+  lb.addEventListener('click',function(e){
+    if(!e.target.closest('.lb-img-wrap')&&!e.target.closest('.lb-prev')&&!e.target.closest('.lb-next')&&!e.target.closest('.lb-close'))
+      closeLightbox();
+  });
+});
 </script>
 
 <!-- LIGHTBOX -->
