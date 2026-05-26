@@ -156,6 +156,22 @@ section{padding:6.5rem 4rem}
 .frase-name{margin-top:2rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,150,58,.5)}
 @media(max-width:900px){.frase-sec{padding:4rem 1.5rem}.frase-card{padding:2.5rem 2rem}}
 
+/* LIBRO */
+.libro-sec{background:var(--humo);padding:6rem 4rem;border-top:1px solid rgba(201,150,58,.08)}
+.libro-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:5.5rem;align-items:center;max-width:1100px;margin:0 auto}
+.libro-img-wrap{position:relative;display:flex;justify-content:center}
+.libro-img{width:100%;max-width:320px;display:block;box-shadow:0 30px 70px rgba(0,0,0,.65),0 0 0 1px rgba(201,150,58,.1);filter:brightness(.95)}
+.libro-shine{position:absolute;top:0;left:0;right:0;bottom:0;max-width:320px;margin:0 auto;background:linear-gradient(120deg,rgba(255,255,255,.07) 0%,transparent 50%);pointer-events:none}
+.libro-body .sec-label{margin-bottom:1rem}
+.libro-body h2{font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:900;color:var(--crema);line-height:1.15;margin-bottom:1.3rem}
+.libro-body h2 em{font-style:italic;color:var(--dorado)}
+.libro-desc{font-family:var(--italic);font-size:1.05rem;font-weight:300;color:rgba(245,237,216,.62);line-height:1.95;margin-bottom:2.2rem}
+.libro-sep{width:40px;height:1px;background:rgba(201,150,58,.35);margin-bottom:2.2rem}
+.btn-wpp{display:inline-flex;align-items:center;gap:.75rem;background:#25a244;color:#fff;font-family:var(--sans);font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:.95rem 2rem;border:none;cursor:pointer;transition:background .3s,transform .2s;border-radius:2px}
+.btn-wpp:hover{background:#1e8a38;transform:translateY(-2px)}
+.btn-wpp svg{flex-shrink:0}
+@media(max-width:900px){.libro-sec{padding:4.5rem 1.5rem}.libro-grid{grid-template-columns:1fr;gap:2.8rem;text-align:center}.libro-img{max-width:220px}.libro-sep{margin:0 auto 2.2rem}.libro-body .sec-label{justify-content:center}}
+
 /* HERO BOTTOM */
 .hero-bottom{position:relative;height:80vh;overflow:hidden}
 .hero-bottom img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.55) saturate(.7)}
@@ -392,6 +408,26 @@ footer{background:var(--humo);padding:2.2rem 4rem 1.4rem;display:flex;flex-direc
   </div>
 </section>
 
+<!-- LIBRO -->
+<section class="libro-sec" id="libro">
+  <div class="libro-grid">
+    <div class="libro-img-wrap">
+      <img class="libro-img" src="src/libro.jpg" alt="Libro de Ronival Ferreira">
+      <div class="libro-shine"></div>
+    </div>
+    <div class="libro-body">
+      <div class="sec-label" data-i18n="libro_label">El Libro</div>
+      <h2 data-i18n="libro_h2">Una promesa <em>a lomo de caballo</em></h2>
+      <div class="libro-sep"></div>
+      <p class="libro-desc" data-i18n="libro_desc">Una promesa cumplida a lomo de caballo. Ronival partió desde la frontera de Santa Vitória do Palmar (RS) hasta el Santuario de Nuestra Señora Aparecida (SP), realizando una jornada de fe que pocos se animarían a soñar. Este libro cuenta esa historia: la del hombre que hizo lo que prometió.</p>
+      <a class="btn-wpp" href="https://wa.me/555399649505?text=Ol%C3%A1%20Ronival%2C%20tenho%20interesse%20no%20seu%20livro%20sobre%20a%20jornada%20de%20f%C3%A9%20a%20cavalo%20at%C3%A9%20Aparecida.%20Poderia%20me%20dar%20mais%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n="libro_cta">Consultar por WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-sec" id="contacto">
   <div class="inner" style="position:relative">
@@ -489,6 +525,10 @@ const translations = {
     cta_btn2:        'Volver al inicio ↑',
     cta_badge:       '✦ &nbsp; Contenido en desarrollo &nbsp; ✦',
     frase_text:      'De cada legua <em>un encanto</em>,<br>cada parada <em>una amistad</em>,<br>en cada mate <em>una nostalgia</em>.',
+    libro_label:     'El Libro',
+    libro_h2:        'Una promesa <em>a lomo de caballo</em>',
+    libro_desc:      'Una promesa cumplida a lomo de caballo. Ronival partió desde la frontera de Santa Vitória do Palmar (RS) hasta el Santuario de Nuestra Señora Aparecida (SP), realizando una jornada de fe que pocos se animarían a soñar. Este libro cuenta esa historia: la del hombre que hizo lo que prometió.',
+    libro_cta:       'Consultar por WhatsApp',
     foot_copy:       '© 2025 · Ronival Ferreira · Hecho con alma de campo'
   },
   pt: {
@@ -541,6 +581,10 @@ const translations = {
     cta_btn2:        'Voltar ao início ↑',
     cta_badge:       '✦ &nbsp; Conteúdo em desenvolvimento &nbsp; ✦',
     frase_text:      'De cada légua <em>um encanto</em>,<br>cada parada <em>uma amizade</em>,<br>em cada mate <em>uma saudade</em>.',
+    libro_label:     'O Livro',
+    libro_h2:        'Uma promessa <em>a cavalo</em>',
+    libro_desc:      'Uma promessa cumprida a cavalo. Ronival partiu da fronteira de Santa Vitória do Palmar (RS) até o Santuário de Nossa Senhora Aparecida (SP), realizando uma jornada de fé que poucos ousariam sonhar. Este livro conta essa história: a do homem que fez o que prometeu.',
+    libro_cta:       'Consultar pelo WhatsApp',
     foot_copy:       '© 2025 · Ronival Ferreira · Feito com alma de campo'
   },
   en: {
@@ -593,6 +637,10 @@ const translations = {
     cta_btn2:        'Back to top ↑',
     cta_badge:       '✦ &nbsp; Content in development &nbsp; ✦',
     frase_text:      'From each league <em>an enchantment</em>,<br>each stop <em>a friendship</em>,<br>in each mate <em>a nostalgia</em>.',
+    libro_label:     'The Book',
+    libro_h2:        'A promise <em>on horseback</em>',
+    libro_desc:      'A promise fulfilled on horseback. Ronival set out from the border of Santa Vitória do Palmar (RS) to the Sanctuary of Our Lady of Aparecida (SP) — a journey of faith that few would dare to dream. This book tells that story: the story of a man who kept his word.',
+    libro_cta:       'Enquire on WhatsApp',
     foot_copy:       '© 2025 · Ronival Ferreira · Made with the soul of the countryside'
   }
 };
